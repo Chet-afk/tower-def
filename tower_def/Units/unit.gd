@@ -2,12 +2,12 @@ extends Node2D
 class_name base_unit
 
 # Movement Related
-var prev_position = null
+var prev_position: Vector2
 var being_held: bool = false
 var clickable: bool = false
 var in_placeable_area: bool = false
 var snappable_area
-
+var first_spawn: bool = true
 
 # Statistics
 var active: bool = false
@@ -30,19 +30,7 @@ func _process(delta):
 		self.set_global_position(get_viewport().get_mouse_position())
 		
 	if Input.is_action_just_released("mouse") and being_held:
-		# Remove the tower if it hasn't been placed before
-		if prev_position == null:
-			queue_free()
-		else:
-			being_held = false
-			active = true
-			# Snap to new area, or to previous one
-			if in_placeable_area:
-				self.set_global_position(snappable_area.get_global_position())
-				prev_position = snappable_area.get_global_position()
-			else:
-				self.set_global_position(prev_position)
-	
+		self.update_position()
 
 # Determine if the sprite should be clickable or not based off cursor
 func _on_snap_position_mouse_entered():
@@ -61,6 +49,19 @@ func _on_snap_position_area_exited(area):
 	if area.is_in_group("placers"):
 		in_placeable_area = false
 
+func update_position():
+	if first_spawn and not in_placeable_area:
+		queue_free()
+	else:
+		first_spawn = false
+		being_held = false
+		active = true
+		# Snap to new area, or to previous one
+		if in_placeable_area:
+			self.set_global_position(snappable_area.get_global_position())
+			prev_position = snappable_area.get_global_position()
+		else:
+			self.set_global_position(prev_position)
 
 
 
