@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://d3kmj55i1xx7f"]
+[gd_scene load_steps=2 format=3 uid="uid://d3kmj55i1xx7f"]
+
+[ext_resource type="Script" path="res://UI/menu.gd" id="1_arngg"]
 
 [node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_arngg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -34,10 +37,11 @@ theme_override_font_sizes/font_size = 30
 text = "INSERT NAME HERE"
 
 [node name="Start" type="Button" parent="."]
-visible = false
 visibility_layer = 0
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
