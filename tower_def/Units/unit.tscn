@@ -26,5 +26,7 @@ shape = SubResource("CircleShape2D_7ypwi")
 [node name="SnapZone" type="CollisionShape2D" parent="SnapPosition"]
 shape = SubResource("CircleShape2D_m8ja7")
 
+[connection signal="area_entered" from="SnapPosition" to="." method="_on_snap_position_area_entered"]
+[connection signal="area_exited" from="SnapPosition" to="." method="_on_snap_position_area_exited"]
 [connection signal="mouse_entered" from="SnapPosition" to="." method="_on_snap_position_mouse_entered"]
 [connection signal="mouse_exited" from="SnapPosition" to="." method="_on_snap_position_mouse_exited"]

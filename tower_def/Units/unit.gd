@@ -1,13 +1,16 @@
 extends Node2D
 class_name base_unit
 
-# Functionality
-var prev_position: Vector2
+# Movement Related
+var prev_position = null
 var being_held: bool = false
 var clickable: bool = false
-var active: bool = false
+var in_placeable_area: bool = false
+var snappable_area
+
 
 # Statistics
+var active: bool = false
 var atk_speed: float
 var atk: int
 var range: float
@@ -27,10 +30,18 @@ func _process(delta):
 		self.set_global_position(get_viewport().get_mouse_position())
 		
 	if Input.is_action_just_released("mouse") and being_held:
-		being_held = false
-		active = true
-		# Uncomment this later once prev position is configured
-		#self.set_global_position(prev_position)
+		# Remove the tower if it hasn't been placed before
+		if prev_position == null:
+			queue_free()
+		else:
+			being_held = false
+			active = true
+			# Snap to new area, or to previous one
+			if in_placeable_area:
+				self.set_global_position(snappable_area.get_global_position())
+				prev_position = snappable_area.get_global_position()
+			else:
+				self.set_global_position(prev_position)
 	
 
 # Determine if the sprite should be clickable or not based off cursor
@@ -39,7 +50,21 @@ func _on_snap_position_mouse_entered():
 func _on_snap_position_mouse_exited():
 	clickable = false
 
-# Setters
-func set_prev_pos(position:Vector2):
-	pass
+# Check to see if unit is in snappable area
+func _on_snap_position_area_entered(area):
+	# Placers group is in the placement node
+	if area.is_in_group("placers"):
+		snappable_area = area
+		in_placeable_area = true
+
+func _on_snap_position_area_exited(area):
+	if area.is_in_group("placers"):
+		in_placeable_area = false
+
+
+
+
+
+
+
 
