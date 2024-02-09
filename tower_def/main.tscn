@@ -7,7 +7,6 @@
 [node name="Main" type="Node"]
 
 [node name="Menu" parent="." instance=ExtResource("1_uuig7")]
-visible = false
 
 [node name="Unit" parent="." instance=ExtResource("2_qj4ff")]
 position = Vector2(157, 282)
