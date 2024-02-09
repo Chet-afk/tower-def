@@ -1,22 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://ymnccg0mpo1e"]
+[gd_scene load_steps=7 format=3 uid="uid://ymnccg0mpo1e"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_txsfw"]
 [ext_resource type="PackedScene" uid="uid://d3kmj55i1xx7f" path="res://UI/menu.tscn" id="1_uuig7"]
-[ext_resource type="PackedScene" uid="uid://dxs2crcp5i8nl" path="res://Units/unit.tscn" id="2_qj4ff"]
+[ext_resource type="PackedScene" uid="uid://c88jauj4dh3im" path="res://Units/enemy.tscn" id="2_fj7eb"]
+[ext_resource type="PackedScene" uid="uid://rqnlle5nm863" path="res://Units/player_units.tscn" id="3_8wes6"]
 [ext_resource type="PackedScene" uid="uid://obndp0uxr3fg" path="res://Units/placement.tscn" id="3_24vqi"]
 
+[sub_resource type="Curve2D" id="Curve2D_1kf2a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 472, 0)
+}
+point_count = 2
+
 [node name="Main" type="Node"]
+script = ExtResource("1_txsfw")
+enemies = ExtResource("2_fj7eb")
 
 [node name="Menu" parent="." instance=ExtResource("1_uuig7")]
 visible = false
 
-[node name="Unit" parent="." instance=ExtResource("2_qj4ff")]
-position = Vector2(157, 282)
-
-[node name="Placement" parent="." instance=ExtResource("3_24vqi")]
-position = Vector2(116, 298)
-
-[node name="Unit2" parent="." instance=ExtResource("2_qj4ff")]
-position = Vector2(346, 303)
-
 [node name="Placement2" parent="." instance=ExtResource("3_24vqi")]
 position = Vector2(304, 463)
+
+[node name="PlayerUnits" parent="." instance=ExtResource("3_8wes6")]
+position = Vector2(116, 150)
+
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1kf2a")
+
+[node name="Spawner" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(16, 0)
+
+[node name="MobSpawn" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
