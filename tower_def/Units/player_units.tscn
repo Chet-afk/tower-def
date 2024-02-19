@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://rqnlle5nm863"]
+[gd_scene load_steps=4 format=3 uid="uid://rqnlle5nm863"]
 
 [ext_resource type="PackedScene" uid="uid://dxs2crcp5i8nl" path="res://Units/unit.tscn" id="1_r4672"]
 [ext_resource type="Script" path="res://Units/player_units.gd" id="2_bw0ws"]
-[ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="3_tufea"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y5nra"]
 radius = 36.1248
 
 [node name="PlayerUnit" instance=ExtResource("1_r4672")]
 script = ExtResource("2_bw0ws")
-attack_scene = ExtResource("3_tufea")
+attack_scene = null
 
 [node name="Detection" parent="." index="1" groups=["tower"]]
 
@@ -19,7 +18,7 @@ attack_scene = ExtResource("3_tufea")
 shape = SubResource("CircleShape2D_y5nra")
 
 [node name="AttackTimer" type="Timer" parent="." index="3"]
-wait_time = 0.5
+wait_time = 0.1
 autostart = true
 
 [connection signal="area_entered" from="SnapPosition" to="." method="_on_snap_position_area_entered"]

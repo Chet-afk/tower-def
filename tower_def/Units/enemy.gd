@@ -18,4 +18,7 @@ func _process(delta):
 
 
 func _on_hitbox_body_entered(body):
-	hp -= body.atk
+	hp -= body.get_atk()
+	# Delete the bullet. Freeing here rather than in bullet code
+	# frees up masking and collision shenanigans
+	body.queue_free()

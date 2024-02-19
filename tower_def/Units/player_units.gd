@@ -69,6 +69,7 @@ func _on_attack_timer_timeout():
 		return
 	var attack = attack_scene.instantiate()
 	attack.set_position(self.get_position())
+	attack.set_atk(get_atk())
 	# attach the bullets to the viewport 
 	# otherwise will follow this tower node if moved
 	get_parent().add_child(attack)

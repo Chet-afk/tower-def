@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ymnccg0mpo1e"]
+[gd_scene load_steps=8 format=3 uid="uid://ymnccg0mpo1e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_txsfw"]
 [ext_resource type="PackedScene" uid="uid://d3kmj55i1xx7f" path="res://UI/menu.tscn" id="1_uuig7"]
 [ext_resource type="PackedScene" uid="uid://c88jauj4dh3im" path="res://Units/enemy.tscn" id="2_fj7eb"]
 [ext_resource type="PackedScene" uid="uid://rqnlle5nm863" path="res://Units/player_units.tscn" id="3_8wes6"]
 [ext_resource type="PackedScene" uid="uid://obndp0uxr3fg" path="res://Units/placement.tscn" id="3_24vqi"]
+[ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="6_388xw"]
 
 [sub_resource type="Curve2D" id="Curve2D_1kf2a"]
 _data = {
@@ -24,6 +25,7 @@ position = Vector2(304, 463)
 
 [node name="PlayerUnits" parent="." instance=ExtResource("3_8wes6")]
 position = Vector2(116, 150)
+attack_scene = ExtResource("6_388xw")
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_1kf2a")
