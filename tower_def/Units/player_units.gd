@@ -1,6 +1,8 @@
 extends base_unit
 class_name player_unit_base
 
+@export var attack_scene: PackedScene
+
 # Movement Related
 var prev_position: Vector2
 var being_held: bool = false
@@ -59,3 +61,15 @@ func update_position():
 			prev_position = snappable_area.get_global_position()
 		else:
 			self.set_global_position(prev_position)
+
+
+func _on_attack_timer_timeout():
+	# Create the attack
+	if not active:
+		return
+	var attack = attack_scene.instantiate()
+	attack.set_position(self.get_position())
+	# attach the bullets to the viewport 
+	# otherwise will follow this tower node if moved
+	get_parent().add_child(attack)
+

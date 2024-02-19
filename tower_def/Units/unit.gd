@@ -2,7 +2,7 @@ extends Node2D
 class_name base_unit
 
 
-
+var attack: base_attack
 # Statistics
 var atk_speed: float
 var atk: int
@@ -35,3 +35,7 @@ func set_range(value: float):
 
 
 
+
+# Begin attacking if enemy body is in the detection area
+func _on_detection_body_entered(body):
+	pass # Replace with function body.

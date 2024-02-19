@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvjtvcdbknawy"]
+
+[ext_resource type="Script" path="res://Attacks/attack.gd" id="1_5e10g"]
+[ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="2_0v8tb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xk1o2"]
+radius = 7.0
+height = 14.0
+
+[node name="Attack" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_5e10g")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+skew = 0.733038
+texture = ExtResource("2_0v8tb")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="HitboxArea" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_xk1o2")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

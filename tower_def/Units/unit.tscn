@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="2_x61rt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ypwi"]
-radius = 29.1548
+radius = 105.076
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_tugdw")
@@ -17,3 +17,5 @@ texture = ExtResource("2_x61rt")
 
 [node name="DetectionArea" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_7ypwi")
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
