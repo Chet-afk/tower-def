@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqgxx"]
 
-[node name="Attack" type="CharacterBody2D"]
+[node name="Attack" type="CharacterBody2D" groups=["attack"]]
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_5e10g")

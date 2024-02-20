@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name base_attack
 
-var atk: int 
+var atk: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# This needs to change to the enemy in question

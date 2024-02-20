@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8aew0avw85ej"]
+
+[ext_resource type="Script" path="res://Units/PlayerUnit.gd" id="1_ar351"]
+[ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="2_sfvcf"]
+[ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="2_tgv0o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em1rt"]
+radius = 105.076
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5gxr"]
+radius = 36.1248
+
+[node name="PlayerUnit" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_ar351")
+attack_scene = ExtResource("2_tgv0o")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_sfvcf")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionArea" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_em1rt")
+
+[node name="SnapPosition" type="Area2D" parent="." groups=["tower"]]
+
+[node name="SnapZone" type="CollisionShape2D" parent="SnapPosition"]
+shape = SubResource("CircleShape2D_m5gxr")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="area_entered" from="SnapPosition" to="." method="_on_snap_position_area_entered"]
+[connection signal="area_exited" from="SnapPosition" to="." method="_on_snap_position_area_exited"]
+[connection signal="mouse_entered" from="SnapPosition" to="." method="_on_snap_position_mouse_entered"]
+[connection signal="mouse_exited" from="SnapPosition" to="." method="_on_snap_position_mouse_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var hp: = 1
+var hp: = 10
 var atk: = 10
 
 
@@ -19,6 +19,6 @@ func _process(delta):
 
 func _on_hitbox_body_entered(body):
 	hp -= body.get_atk()
-	# Delete the bullet. Freeing here rather than in bullet code
-	# frees up masking and collision shenanigans
+	# Delete the bullet. Change this later when doing other 
+	# Bullets so bullets handle their own freeing
 	body.queue_free()
