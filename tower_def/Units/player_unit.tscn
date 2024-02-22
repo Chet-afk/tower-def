@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="2_tgv0o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_em1rt"]
-radius = 105.076
+radius = 323.014
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m5gxr"]
 radius = 36.1248

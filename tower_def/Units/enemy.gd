@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 var hp: = 10
 var atk: = 10
-
+# Check to ensure node does not queue free
+# before actually spawning
+var active: bool = false 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +21,12 @@ func _process(delta):
 
 func _on_hitbox_body_entered(body):
 	hp -= body.get_atk()
-	# Delete the bullet. Change this later when doing other 
-	# Bullets so bullets handle their own freeing
-	body.queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	if active:
+		queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	active = true

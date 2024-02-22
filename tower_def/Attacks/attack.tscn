@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="2_0v8tb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqgxx"]
+radius = 6.0
+height = 14.0
 
 [node name="Attack" type="CharacterBody2D" groups=["attack"]]
 collision_mask = 0
@@ -12,8 +14,11 @@ script = ExtResource("1_5e10g")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-skew = 0.733038
 texture = ExtResource("2_0v8tb")
 
 [node name="SpriteShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gqgxx")
+
+[node name="OnScreenCheck" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="OnScreenCheck" to="." method="_on_on_screen_check_screen_exited"]

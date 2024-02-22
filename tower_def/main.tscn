@@ -20,7 +20,7 @@ enemies = ExtResource("2_fj7eb")
 visible = false
 
 [node name="Placement2" parent="." instance=ExtResource("3_24vqi")]
-position = Vector2(304, 463)
+position = Vector2(146, 237)
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_1kf2a")
@@ -29,9 +29,10 @@ curve = SubResource("Curve2D_1kf2a")
 position = Vector2(16, 0)
 
 [node name="MobSpawn" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 autostart = true
 
 [node name="PlayerUnit" parent="." instance=ExtResource("5_uvvqn")]
+position = Vector2(234, 226)
 
 [connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
