@@ -7,8 +7,6 @@ var speed: int = 800
 func _ready():
 	pass
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_and_slide()
@@ -19,7 +17,7 @@ func set_atk(damage):
 func set_target(enemy_position: Vector2):
 	self.look_at(enemy_position)
 	var direction: Vector2 = enemy_position - self.position
-	self.set_velocity(direction.normalized() * speed)
+	self.set_velocity(direction.normalized() * self.speed)
 
 func get_atk() -> int:
 	return(atk)

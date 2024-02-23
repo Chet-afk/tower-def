@@ -3,7 +3,7 @@ class_name player_unit_base
 
 @export var attack_scene: PackedScene
 
-var attack: base_attack
+var attack
 var atk_speed: float
 var atk: int
 var range: float
@@ -86,9 +86,9 @@ func _on_attack_timer_timeout():
 	# Create the attack
 	if not active:
 		return
-	var attack = attack_scene.instantiate()
+	attack = attack_scene.instantiate()
+	attack.set_atk(self.get_atk())
 	attack.set_position(self.get_position())
-	attack.set_atk(10)
 	attack.set_target(enemy_to_target)
 	# attach the bullets to the viewport 
 	# otherwise will follow this tower node if moved

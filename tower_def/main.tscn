@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ymnccg0mpo1e"]
+[gd_scene load_steps=10 format=3 uid="uid://ymnccg0mpo1e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_txsfw"]
 [ext_resource type="PackedScene" uid="uid://d3kmj55i1xx7f" path="res://UI/menu.tscn" id="1_uuig7"]
 [ext_resource type="PackedScene" uid="uid://c88jauj4dh3im" path="res://Units/enemy.tscn" id="2_fj7eb"]
 [ext_resource type="PackedScene" uid="uid://obndp0uxr3fg" path="res://Units/placement.tscn" id="3_24vqi"]
 [ext_resource type="PackedScene" uid="uid://c8aew0avw85ej" path="res://Units/player_unit.tscn" id="5_uvvqn"]
+[ext_resource type="PackedScene" uid="uid://bkvuyohk73tvt" path="res://Units/short_rangeunit.tscn" id="6_13h1d"]
+[ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="7_81hr8"]
+[ext_resource type="PackedScene" uid="uid://bnr44e4ln1s1m" path="res://Attacks/short_attack.tscn" id="8_fj5rr"]
 
 [sub_resource type="Curve2D" id="Curve2D_1kf2a"]
 _data = {
@@ -19,8 +22,11 @@ enemies = ExtResource("2_fj7eb")
 [node name="Menu" parent="." instance=ExtResource("1_uuig7")]
 visible = false
 
+[node name="Placement3" parent="." instance=ExtResource("3_24vqi")]
+position = Vector2(292, 474)
+
 [node name="Placement2" parent="." instance=ExtResource("3_24vqi")]
-position = Vector2(146, 237)
+position = Vector2(178, 484)
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_1kf2a")
@@ -33,6 +39,11 @@ wait_time = 0.1
 autostart = true
 
 [node name="PlayerUnit" parent="." instance=ExtResource("5_uvvqn")]
-position = Vector2(234, 226)
+position = Vector2(459, 598)
+attack_scene = ExtResource("7_81hr8")
+
+[node name="ShortRangeunit" parent="." instance=ExtResource("6_13h1d")]
+position = Vector2(173, 482)
+attack_scene = ExtResource("8_fj5rr")
 
 [connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
