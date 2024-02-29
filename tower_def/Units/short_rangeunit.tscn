@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkvuyohk73tvt"]
+[gd_scene load_steps=5 format=3 uid="uid://bkvuyohk73tvt"]
 
 [ext_resource type="PackedScene" uid="uid://c8aew0avw85ej" path="res://Units/player_unit.tscn" id="1_f15ss"]
 [ext_resource type="Script" path="res://Units/short_rangeunit.gd" id="2_tmwpx"]
+[ext_resource type="PackedScene" uid="uid://bnr44e4ln1s1m" path="res://Attacks/short_attack.tscn" id="3_j02ha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r82a2"]
 resource_local_to_scene = true
@@ -9,6 +10,7 @@ radius = 76.1643
 
 [node name="ShortRangeunit" instance=ExtResource("1_f15ss")]
 script = ExtResource("2_tmwpx")
+attack_scene = ExtResource("3_j02ha")
 
 [node name="DetectionArea" parent="Detection" index="0"]
 shape = SubResource("CircleShape2D_r82a2")

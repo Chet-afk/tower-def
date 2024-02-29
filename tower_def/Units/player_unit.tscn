@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8aew0avw85ej"]
+[gd_scene load_steps=6 format=3 uid="uid://c8aew0avw85ej"]
 
 [ext_resource type="Script" path="res://Units/PlayerUnit.gd" id="1_ar351"]
+[ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="2_6tbc7"]
 [ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="2_sfvcf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_em1rt"]
@@ -13,6 +14,7 @@ radius = 36.1248
 [node name="PlayerUnit" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_ar351")
+attack_scene = ExtResource("2_6tbc7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.35, 0.35)

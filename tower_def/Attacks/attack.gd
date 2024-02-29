@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name base_attack
 
 var atk: int = 0
-var speed: int = 800
+var speed: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

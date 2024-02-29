@@ -5,16 +5,15 @@ class_name player_unit_base
 
 var attack
 var atk_speed: float
-var atk: int
+var atk: int = 0
 var range: float
 
 # Movement Related
-var prev_position: Vector2
+var placer_node: Placer
 var being_held: bool = false
 var clickable: bool = false
 var in_placeable_area: bool = false
 var snappable_area: Area2D
-var first_spawn: bool = true
 
 # If the unit is able to attack or not
 var active: bool = false
@@ -29,7 +28,9 @@ func get_atk() -> int:
 	return(atk)
 func get_range() -> float:
 	return($Detection/DetectionArea.get_radius())
-	
+func get_prev_node() -> Placer:
+	return(placer_node)
+
 # Setters
 func set_atk_speed(value: float):
 	atk_speed = value
@@ -37,7 +38,8 @@ func set_atk(value: int):
 	atk = value
 func set_range(value: float):
 	$Detection/DetectionArea.set_radius(value)
-
+func set_placer(placement: Placer):
+	placer_node = placement
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -86,28 +88,33 @@ func _on_attack_timer_timeout():
 	# Create the attack
 	if not active:
 		return
-	attack = attack_scene.instantiate()
-	attack.set_atk(self.get_atk())
-	attack.set_position(self.get_position())
-	attack.set_target(enemy_to_target)
-	# attach the bullets to the viewport 
-	# otherwise will follow this tower node if moved
-	get_parent().add_child(attack)
+	create_attack()
+
 
 # Helpers
 func update_position():
-	if first_spawn and not in_placeable_area:
-		queue_free()
-	else:
-		first_spawn = false
-		being_held = false
-		active = true
-		# Snap to new area, or to previous one
-		if in_placeable_area:
-			self.set_global_position(snappable_area.get_global_position())
-			prev_position = snappable_area.get_global_position()
+	being_held = false
+	active = true
+	# Snap to new area, or to previous one
+	if in_placeable_area:
+		var new_placer = snappable_area.get_parent()
+		self.set_global_position(new_placer.get_global_position())
+		# swap the towers
+		#TODO Test this, cant test since not instantiated with a placer node
+		if new_placer.is_holding():
+			# Set the new placement values to the unit
+			var swap_unit = new_placer.unit
+			swap_unit.set_global_position(placer_node.get_global_position())
+			swap_unit.set_placer(self.placer_node)
+			placer_node.set_unit(swap_unit)
 		else:
-			self.set_global_position(prev_position)
+			# Reset to null for old placer
+			placer_node.set_unit(null)
+		placer_node = new_placer
+		placer_node.set_unit(self)
+
+	else:
+		self.set_global_position(placer_node.get_global_position())
 
 func find_target():
 	# find the unit closest to bottom
@@ -120,7 +127,9 @@ func find_target():
 			lowest = enemy.position
 	enemy_to_target = lowest
 
-
+func create_attack():
+	# Each inherited unit will create its own attack
+	pass
 
 
 

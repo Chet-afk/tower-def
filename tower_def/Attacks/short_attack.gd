@@ -5,5 +5,4 @@ func _init():
 
 
 func _on_free_timer_timeout():
-	print(self.atk)
 	queue_free()
