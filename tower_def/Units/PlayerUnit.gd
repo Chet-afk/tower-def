@@ -99,8 +99,8 @@ func update_position():
 	if in_placeable_area:
 		var new_placer = snappable_area.get_parent()
 		self.set_global_position(new_placer.get_global_position())
+		
 		# swap the towers
-		#TODO Test this, cant test since not instantiated with a placer node
 		if new_placer.is_holding():
 			# Set the new placement values to the unit
 			var swap_unit = new_placer.unit
