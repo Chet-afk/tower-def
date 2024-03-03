@@ -5,6 +5,7 @@
 
 [node name="Cleave" instance=ExtResource("1_570e1")]
 script = ExtResource("2_uc53w")
+piercable = true
 
 [node name="SpriteShape" parent="." index="1"]
 polygon = PackedVector2Array(179, 63, 0, 0, 179, -68)

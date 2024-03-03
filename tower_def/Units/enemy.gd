@@ -19,8 +19,10 @@ func _process(delta):
 		queue_free()
 
 
-func _on_hitbox_body_entered(body):
+func _on_hitbox_body_entered(body: base_attack):
 	hp -= body.get_atk()
+	if not body.get_pierceable():
+		body.queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://xrny1aifnp5e"]
+
+[ext_resource type="PackedScene" uid="uid://c8aew0avw85ej" path="res://Units/player_unit.tscn" id="1_bgqfw"]
+[ext_resource type="Script" path="res://Units/archer.gd" id="2_fggua"]
+[ext_resource type="PackedScene" uid="uid://chnk0qmpvdc6s" path="res://Attacks/arrow.tscn" id="3_2jhn2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_elmtl"]
+resource_local_to_scene = true
+radius = 217.329
+
+[node name="Archer" instance=ExtResource("1_bgqfw")]
+script = ExtResource("2_fggua")
+attack_scene = ExtResource("3_2jhn2")
+
+[node name="DetectionArea" parent="Detection" index="0"]
+shape = SubResource("CircleShape2D_elmtl")
+
+[node name="AttackTimer" parent="." index="3"]
+wait_time = 3.0

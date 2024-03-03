@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name player_unit_base
 
 @export var attack_scene: PackedScene
-
 var attack
 var atk_speed: float
 var atk: int = 0
@@ -86,9 +85,8 @@ func _on_snap_position_area_exited(area):
 
 func _on_attack_timer_timeout():
 	# Create the attack
-	if not active:
-		return
-	create_attack()
+	if active:
+		create_attack()
 
 
 # Helpers

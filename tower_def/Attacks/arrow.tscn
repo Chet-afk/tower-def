@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://chnk0qmpvdc6s"]
+
+[ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="1_ajhtt"]
+[ext_resource type="Script" path="res://Attacks/arrow.gd" id="2_0n80l"]
+
+[node name="Arrow" instance=ExtResource("1_ajhtt")]
+script = ExtResource("2_0n80l")
+
+[node name="SpriteShape" parent="." index="1"]
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
