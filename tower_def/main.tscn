@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://obndp0uxr3fg" path="res://Units/placement.tscn" id="3_24vqi"]
 [ext_resource type="PackedScene" uid="uid://dre5btxi6etgh" path="res://UI/tower_spawner.tscn" id="5_5ytty"]
 [ext_resource type="PackedScene" uid="uid://c8aew0avw85ej" path="res://Units/player_unit.tscn" id="5_uvvqn"]
-[ext_resource type="PackedScene" uid="uid://bkvuyohk73tvt" path="res://Units/short_rangeunit.tscn" id="6_13h1d"]
+[ext_resource type="PackedScene" uid="uid://bkvuyohk73tvt" path="res://Units/knight.tscn" id="6_13h1d"]
 
 [sub_resource type="Curve2D" id="Curve2D_1kf2a"]
 _data = {

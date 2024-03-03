@@ -1,12 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvjtvcdbknawy"]
+[gd_scene load_steps=3 format=3 uid="uid://dvjtvcdbknawy"]
 
 [ext_resource type="Script" path="res://Attacks/attack.gd" id="1_5e10g"]
 [ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="2_0v8tb"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqgxx"]
-resource_local_to_scene = true
-radius = 6.0
-height = 14.0
 
 [node name="Attack" type="CharacterBody2D" groups=["attack"]]
 collision_mask = 0
@@ -17,8 +12,7 @@ script = ExtResource("1_5e10g")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_0v8tb")
 
-[node name="SpriteShape" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_gqgxx")
+[node name="SpriteShape" type="CollisionPolygon2D" parent="."]
 
 [node name="OnScreenCheck" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-4.76837e-07, 4.76837e-07)

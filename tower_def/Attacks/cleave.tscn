@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnr44e4ln1s1m"]
+
+[ext_resource type="PackedScene" uid="uid://dvjtvcdbknawy" path="res://Attacks/attack.tscn" id="1_570e1"]
+[ext_resource type="Script" path="res://Attacks/cleave.gd" id="2_uc53w"]
+
+[node name="Cleave" instance=ExtResource("1_570e1")]
+script = ExtResource("2_uc53w")
+
+[node name="SpriteShape" parent="." index="1"]
+polygon = PackedVector2Array(179, 63, 0, 0, 179, -68)
+
+[node name="FreeTimer" type="Timer" parent="." index="3"]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]
