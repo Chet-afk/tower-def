@@ -11,7 +11,7 @@ func create_attack():
 	var degree_rotation = attack.get_rotation_degrees()
 	get_parent().add_child(attack)
 	
-	for i in range(5):
+	for i in range(10):
 		# Create one shot timer to space out shots
 		await get_tree().create_timer(0.1).timeout
 		attack = attack_scene.instantiate()

@@ -16,4 +16,4 @@ attack_scene = ExtResource("3_2jhn2")
 shape = SubResource("CircleShape2D_elmtl")
 
 [node name="AttackTimer" parent="." index="3"]
-wait_time = 3.0
+wait_time = 2.0
