@@ -4,13 +4,9 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+	var tower_spawns = get_tree().get_nodes_in_group("tower_spawner")
+	for spawner in tower_spawns:
+		spawner.spawned_unit.connect(_on_unit_spawned)
 
 func _on_mob_spawn_timeout():
 	# Create new mob and the spawner location
@@ -23,7 +19,11 @@ func _on_mob_spawn_timeout():
 	
 	add_child(new_enemy)
 	
+func _on_unit_spawned():
+	# When a tower spawner spawns a unit
+	# Connect that units being_held signal here
 	
+	pass
 	
 	
 	

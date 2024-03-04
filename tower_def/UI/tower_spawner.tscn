@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/tower_spawner.gd" id="1_s4jc3"]
 [ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="3_a1pw4"]
 
-[node name="tower_spawner" type="Button"]
+[node name="tower_spawner" type="Button" groups=["tower_spawner"]]
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_s4jc3")

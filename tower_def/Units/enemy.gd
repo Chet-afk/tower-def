@@ -22,18 +22,21 @@ func _process(delta):
 
 
 func _on_hitbox_body_entered(body: base_attack):
-	hp -= body.get_atk()
+	var dmg = body.get_atk()
+	# Remove the attack unless its a persistent one
+	if not body.get_pierceable():
+		body.queue_free()
+	
+	hp -= dmg
 	
 	# Damage popup
 	var dmg_text = damage_label.instantiate()
-	dmg_text.set_text(str(body.get_atk()))
+	dmg_text.set_text(str(dmg))
 	dmg_text.set_global_position(self.get_global_position())
 	get_parent().add_child(dmg_text)
 	
 	
-	# Remove the attack unless its a persistent one
-	if not body.get_pierceable():
-		body.queue_free()
+
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
