@@ -19,11 +19,13 @@ func _on_mob_spawn_timeout():
 	
 	add_child(new_enemy)
 	
-func _on_unit_spawned():
+func _on_unit_spawned(unit: player_unit_base):
 	# When a tower spawner spawns a unit
 	# Connect that units being_held signal here
-	
-	pass
-	
+	unit.holding.connect(_reveal_sell)
+
+func _reveal_sell():
+	# Show / Hide the trash when a tower is picked up / dropped
+	$Trash.set_visible(not $Trash.is_visible())
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ymnccg0mpo1e"]
+[gd_scene load_steps=10 format=3 uid="uid://ymnccg0mpo1e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_txsfw"]
 [ext_resource type="PackedScene" uid="uid://d3kmj55i1xx7f" path="res://UI/menu.tscn" id="1_uuig7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dre5btxi6etgh" path="res://UI/tower_spawner.tscn" id="5_5ytty"]
 [ext_resource type="PackedScene" uid="uid://bkvuyohk73tvt" path="res://Units/knight.tscn" id="6_13h1d"]
 [ext_resource type="PackedScene" uid="uid://xrny1aifnp5e" path="res://Units/archer.tscn" id="7_wx8vu"]
+[ext_resource type="PackedScene" uid="uid://dwtnm6judx145" path="res://Units/trash.tscn" id="8_i8y2a"]
 
 [sub_resource type="Curve2D" id="Curve2D_1kf2a"]
 _data = {
@@ -21,11 +22,24 @@ enemies = ExtResource("2_fj7eb")
 [node name="Menu" parent="." instance=ExtResource("1_uuig7")]
 visible = false
 
+[node name="Trash" parent="." instance=ExtResource("8_i8y2a")]
+visible = false
+position = Vector2(448, 64)
+
+[node name="Placement5" parent="." instance=ExtResource("3_24vqi")]
+position = Vector2(376, 504)
+
 [node name="Placement3" parent="." instance=ExtResource("3_24vqi")]
 position = Vector2(320, 256)
 
 [node name="Placement2" parent="." instance=ExtResource("3_24vqi")]
 position = Vector2(136, 256)
+
+[node name="Placement4" parent="." instance=ExtResource("3_24vqi")]
+position = Vector2(224, 480)
+
+[node name="Placement" parent="." instance=ExtResource("3_24vqi")]
+position = Vector2(64, 504)
 
 [node name="SpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_1kf2a")
@@ -50,14 +64,5 @@ offset_top = 642.0
 offset_right = 283.0
 offset_bottom = 702.0
 unit = ExtResource("7_wx8vu")
-
-[node name="Placement4" parent="." instance=ExtResource("3_24vqi")]
-position = Vector2(224, 480)
-
-[node name="Placement" parent="." instance=ExtResource("3_24vqi")]
-position = Vector2(64, 504)
-
-[node name="Placement5" parent="." instance=ExtResource("3_24vqi")]
-position = Vector2(376, 504)
 
 [connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name player_unit_base
 
+signal holding
+
 @export var attack_scene: PackedScene
 var attack
 var atk_speed: float
@@ -17,6 +19,7 @@ var snappable_area: Area2D
 # If the unit is able to attack or not
 var active: bool = false
 
+# Targetting variables
 var enemies_in_range: Array[Node2D] = []
 var enemy_to_target: = Vector2(0,0)
 
@@ -49,10 +52,13 @@ func _process(delta):
 	# This section checks for movement
 	if Input.is_action_just_pressed("mouse") and clickable:
 		being_held = true
+		holding.emit()
 	elif being_held and Input.is_action_pressed("mouse"):
 		# Follow the cursor so long as its pressed
 		self.set_global_position(get_viewport().get_mouse_position())
+	
 	if Input.is_action_just_released("mouse") and being_held:
+		holding.emit()
 		self.update_position()
 
 	# Constant check for entering enemies into range
@@ -75,7 +81,7 @@ func _on_snap_position_mouse_exited():
 # Check to see if unit is in snappable area
 func _on_snap_position_area_entered(area):
 	# Placers group is in the placement node
-	if area.is_in_group("placers"):
+	if area.is_in_group("placers") or area.get_parent() is Trash:
 		snappable_area = area
 		in_placeable_area = true
 
@@ -95,6 +101,12 @@ func update_position():
 	active = true
 	# Snap to new area, or to previous one
 	if in_placeable_area:
+		
+		# Check if on sell spot
+		if snappable_area.get_parent() is Trash:
+			queue_free()
+			return
+		
 		var new_placer = snappable_area.get_parent()
 		self.set_global_position(new_placer.get_global_position())
 		
