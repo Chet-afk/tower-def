@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ymnccg0mpo1e"]
+[gd_scene load_steps=11 format=3 uid="uid://ymnccg0mpo1e"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_txsfw"]
 [ext_resource type="PackedScene" uid="uid://d3kmj55i1xx7f" path="res://UI/menu.tscn" id="1_uuig7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkvuyohk73tvt" path="res://Units/knight.tscn" id="6_13h1d"]
 [ext_resource type="PackedScene" uid="uid://xrny1aifnp5e" path="res://Units/archer.tscn" id="7_wx8vu"]
 [ext_resource type="PackedScene" uid="uid://dwtnm6judx145" path="res://Units/trash.tscn" id="8_i8y2a"]
+[ext_resource type="PackedScene" uid="uid://dxqdruar561jy" path="res://Units/wall.tscn" id="9_w8n04"]
 
 [sub_resource type="Curve2D" id="Curve2D_1kf2a"]
 _data = {
@@ -21,6 +22,10 @@ enemies = ExtResource("2_fj7eb")
 
 [node name="Menu" parent="." instance=ExtResource("1_uuig7")]
 visible = false
+
+[node name="Wall" parent="." instance=ExtResource("9_w8n04")]
+position = Vector2(147, 599)
+collision_layer = 4
 
 [node name="Trash" parent="." instance=ExtResource("8_i8y2a")]
 visible = false

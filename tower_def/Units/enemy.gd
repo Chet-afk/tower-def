@@ -19,6 +19,9 @@ func _process(delta):
 	move_and_slide()
 	if hp <= 0:
 		queue_free()
+	
+	if get_slide_collision_count() and $AttackTimer.is_stopped():
+		$AttackTimer.start()
 
 
 func _on_hitbox_body_entered(body: base_attack):
@@ -46,3 +49,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	active = true
+
+
+func _on_attack_timer_timeout():
+	# Can assume theres only one collision, since this should only activate
+	# when at the wall
+	var target = get_slide_collision(0).get_collider()
+	target.take_damage(atk)
