@@ -26,6 +26,6 @@ func _on_unit_spawned(unit: player_unit_base):
 
 func _reveal_sell():
 	# Show / Hide the trash when a tower is picked up / dropped
-	$Trash.set_visible(not $Trash.is_visible())
+	$PlayerLayer/Trash.set_visible(not $PlayerLayer/Trash.is_visible())
 	
 	

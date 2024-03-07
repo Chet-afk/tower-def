@@ -23,27 +23,46 @@ enemies = ExtResource("2_fj7eb")
 [node name="Menu" parent="." instance=ExtResource("1_uuig7")]
 visible = false
 
-[node name="Wall" parent="." instance=ExtResource("9_w8n04")]
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="tower_spawner" parent="UI" instance=ExtResource("5_5ytty")]
+offset_left = 2.0
+offset_top = 644.0
+offset_right = 87.0
+offset_bottom = 698.0
+unit = ExtResource("6_13h1d")
+
+[node name="tower_spawner2" parent="UI" instance=ExtResource("5_5ytty")]
+offset_left = 146.0
+offset_top = 642.0
+offset_right = 283.0
+offset_bottom = 702.0
+unit = ExtResource("7_wx8vu")
+
+[node name="PlayerLayer" type="CanvasLayer" parent="."]
+
+[node name="Wall" parent="PlayerLayer" instance=ExtResource("9_w8n04")]
 position = Vector2(147, 599)
 collision_layer = 4
 
-[node name="Trash" parent="." instance=ExtResource("8_i8y2a")]
+[node name="Trash" parent="PlayerLayer" instance=ExtResource("8_i8y2a")]
 visible = false
 position = Vector2(448, 64)
 
-[node name="Placement5" parent="." instance=ExtResource("3_24vqi")]
+[node name="Placement5" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
 position = Vector2(376, 504)
 
-[node name="Placement3" parent="." instance=ExtResource("3_24vqi")]
+[node name="Placement3" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
 position = Vector2(320, 256)
 
-[node name="Placement2" parent="." instance=ExtResource("3_24vqi")]
+[node name="Placement2" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
 position = Vector2(136, 256)
 
-[node name="Placement4" parent="." instance=ExtResource("3_24vqi")]
+[node name="Placement4" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
 position = Vector2(224, 480)
 
-[node name="Placement" parent="." instance=ExtResource("3_24vqi")]
+[node name="Placement" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
 position = Vector2(64, 504)
 
 [node name="SpawnPath" type="Path2D" parent="."]
@@ -55,19 +74,5 @@ position = Vector2(16, 0)
 [node name="MobSpawn" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
-
-[node name="tower_spawner" parent="." instance=ExtResource("5_5ytty")]
-offset_left = 2.0
-offset_top = 644.0
-offset_right = 87.0
-offset_bottom = 698.0
-unit = ExtResource("6_13h1d")
-
-[node name="tower_spawner2" parent="." instance=ExtResource("5_5ytty")]
-offset_left = 146.0
-offset_top = 642.0
-offset_right = 283.0
-offset_bottom = 702.0
-unit = ExtResource("7_wx8vu")
 
 [connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
