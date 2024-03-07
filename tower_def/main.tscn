@@ -12,7 +12,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_1kf2a"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 472, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 1280, 56, 0, 0, 0, 0, 1280, 568)
 }
 point_count = 2
 
@@ -27,49 +27,57 @@ visible = false
 layer = 10
 
 [node name="tower_spawner" parent="UI" instance=ExtResource("5_5ytty")]
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 101.0
-offset_bottom = 86.0
+offset_left = 192.0
+offset_top = 648.0
+offset_right = 277.0
+offset_bottom = 702.0
 unit = ExtResource("6_13h1d")
 
 [node name="tower_spawner2" parent="UI" instance=ExtResource("5_5ytty")]
-offset_left = 112.0
-offset_top = 32.0
-offset_right = 249.0
-offset_bottom = 92.0
+offset_left = 320.0
+offset_top = 640.0
+offset_right = 457.0
+offset_bottom = 700.0
 unit = ExtResource("7_wx8vu")
 
 [node name="PlayerLayer" type="CanvasLayer" parent="."]
 
 [node name="Wall" parent="PlayerLayer" instance=ExtResource("9_w8n04")]
-position = Vector2(248, 632)
+position = Vector2(16, 64)
 collision_layer = 4
 
 [node name="Trash" parent="PlayerLayer" instance=ExtResource("8_i8y2a")]
 visible = false
-position = Vector2(448, 64)
+position = Vector2(520, 24)
 
 [node name="Placement5" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
-position = Vector2(376, 504)
+position = Vector2(384, 536)
 
 [node name="Placement3" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
-position = Vector2(320, 256)
+position = Vector2(144, 152)
 
 [node name="Placement2" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
-position = Vector2(136, 256)
+position = Vector2(384, 216)
 
 [node name="Placement4" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
-position = Vector2(224, 480)
+position = Vector2(136, 312)
 
 [node name="Placement" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
-position = Vector2(64, 504)
+position = Vector2(384, 384)
+
+[node name="Placement7" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
+position = Vector2(136, 600)
+
+[node name="Placement6" parent="PlayerLayer" instance=ExtResource("3_24vqi")]
+position = Vector2(136, 456)
 
 [node name="SpawnPath" type="Path2D" parent="."]
+position = Vector2(0, 8)
 curve = SubResource("Curve2D_1kf2a")
 
 [node name="Spawner" type="PathFollow2D" parent="SpawnPath"]
-position = Vector2(16, 0)
+position = Vector2(1280, 56)
+rotation = 1.5708
 
 [node name="MobSpawn" type="Timer" parent="."]
 wait_time = 0.1

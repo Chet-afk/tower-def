@@ -21,7 +21,7 @@ var active: bool = false
 
 # Targetting variables
 var enemies_in_range: Array[Node2D] = []
-var enemy_to_target: = Vector2(0,0)
+var enemy_to_target: = Vector2(1280,0)
 
 # Getters
 func get_atk_speed() -> float:
@@ -131,11 +131,11 @@ func find_target():
 	if enemies_in_range.is_empty():
 		return
 	
-	var lowest : Vector2 = Vector2(0,0)
+	var closest_to_zero: Vector2 = Vector2(1280,0)
 	for enemy in enemies_in_range:
-		if lowest.y < enemy.position.y:
-			lowest = enemy.position
-	enemy_to_target = lowest
+		if enemy.position.x < closest_to_zero.x:
+			closest_to_zero = enemy.position
+	enemy_to_target = closest_to_zero
 
 func create_attack():
 	# Each inherited unit will create its own attack

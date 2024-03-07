@@ -5,26 +5,30 @@
 [ext_resource type="Texture2D" uid="uid://jv1qjyytx42h" path="res://UI/HP.png" id="3_2klu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja6vu"]
-size = Vector2(499, 133)
+size = Vector2(393.5, 722.5)
 
 [node name="Wall" type="StaticBody2D"]
+position = Vector2(56, 64)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_dgjfy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(7.62939e-06, 0)
-scale = Vector2(3.89844, 1.03516)
+position = Vector2(-52.7501, 294.875)
+scale = Vector2(3.07422, 5.64258)
 texture = ExtResource("1_6nph5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-52.75, 294.75)
 shape = SubResource("RectangleShape2D_ja6vu")
 
 [node name="HPBar" type="TextureProgressBar" parent="."]
-offset_left = -200.0
-offset_right = 210.0
-offset_bottom = 54.0
+offset_left = 144.0
+offset_top = -64.0
+offset_right = 554.0
+offset_bottom = -10.0
 texture_progress = ExtResource("3_2klu0")
+metadata/_edit_use_anchors_ = true
 
 [node name="HPNum" type="Label" parent="HPBar"]
 layout_mode = 1
@@ -39,3 +43,4 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true

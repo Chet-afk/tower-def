@@ -16,7 +16,6 @@ func _on_mob_spawn_timeout():
 	spawner.progress_ratio = randf()
 	
 	new_enemy.position = spawner.position
-	
 	add_child(new_enemy)
 	
 func _on_unit_spawned(unit: player_unit_base):
