@@ -27,23 +27,23 @@ visible = false
 layer = 10
 
 [node name="tower_spawner" parent="UI" instance=ExtResource("5_5ytty")]
-offset_left = 2.0
-offset_top = 644.0
-offset_right = 87.0
-offset_bottom = 698.0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 101.0
+offset_bottom = 86.0
 unit = ExtResource("6_13h1d")
 
 [node name="tower_spawner2" parent="UI" instance=ExtResource("5_5ytty")]
-offset_left = 146.0
-offset_top = 642.0
-offset_right = 283.0
-offset_bottom = 702.0
+offset_left = 112.0
+offset_top = 32.0
+offset_right = 249.0
+offset_bottom = 92.0
 unit = ExtResource("7_wx8vu")
 
 [node name="PlayerLayer" type="CanvasLayer" parent="."]
 
 [node name="Wall" parent="PlayerLayer" instance=ExtResource("9_w8n04")]
-position = Vector2(147, 599)
+position = Vector2(248, 632)
 collision_layer = 4
 
 [node name="Trash" parent="PlayerLayer" instance=ExtResource("8_i8y2a")]
