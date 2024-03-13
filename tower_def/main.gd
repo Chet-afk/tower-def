@@ -28,3 +28,8 @@ func _reveal_sell():
 	$PlayerLayer/Trash.set_visible(not $PlayerLayer/Trash.is_visible())
 	
 	
+
+
+func _on_menu_game_start():
+	$Menu.set_visible(false)
+	$MobSpawn.start()

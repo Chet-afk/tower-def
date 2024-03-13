@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxqdruar561jy"]
+[gd_scene load_steps=6 format=3 uid="uid://dxqdruar561jy"]
 
 [ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="1_6nph5"]
 [ext_resource type="Script" path="res://Units/wall.gd" id="1_dgjfy"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja6vu"]
 size = Vector2(393.5, 722.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcb4r"]
+size = Vector2(64, 720)
 
 [node name="Wall" type="StaticBody2D"]
 position = Vector2(56, 64)
@@ -44,3 +47,10 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="EnemyDetection" type="Area2D" parent="."]
+position = Vector2(-56, 296)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection"]
+position = Vector2(176, 0)
+shape = SubResource("RectangleShape2D_fcb4r")

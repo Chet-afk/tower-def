@@ -1,21 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://obndp0uxr3fg"]
+[gd_scene load_steps=5 format=3 uid="uid://obndp0uxr3fg"]
 
 [ext_resource type="Script" path="res://Units/placement.gd" id="1_45clc"]
-[ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="2_1awry"]
+[ext_resource type="Texture2D" uid="uid://lkmnrm0uain5" path="res://Sprites/placer.png" id="2_difiv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kj7s"]
-size = Vector2(39, 39)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x4yx"]
+size = Vector2(86, 80)
 
-[node name="Placement" type="Node2D" groups=["placement_node"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yuj5s"]
+radius = 40.0
+
+[node name="Placement" type="StaticBody2D" groups=["placement_node"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_45clc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0.0743294, -0.0743895)
 rotation = 3.14159
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_1awry")
+scale = Vector2(1.35294, 1.3579)
+texture = ExtResource("2_difiv")
 
 [node name="PlaceDetect" type="Area2D" parent="." groups=["placers"]]
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceDetect"]
-position = Vector2(0, -0.1875)
-shape = SubResource("RectangleShape2D_1kj7s")
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_3x4yx")
+
+[node name="MoveAround" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yuj5s")

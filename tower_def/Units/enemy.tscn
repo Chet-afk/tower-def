@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Units/enemy.gd" id="1_4l2bb"]
 [ext_resource type="Texture2D" uid="uid://ci5bdk1igpd3" path="res://Sprites/icon.svg" id="1_4o2qx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g32iw"]
-size = Vector2(38, 39)
+[sub_resource type="CircleShape2D" id="CircleShape2D_c1u01"]
+radius = 20.0062
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_673og"]
 size = Vector2(38, 39)
@@ -22,7 +22,7 @@ texture = ExtResource("1_4o2qx")
 
 [node name="DetectionArea" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_g32iw")
+shape = SubResource("CircleShape2D_c1u01")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -35,7 +35,13 @@ shape = SubResource("RectangleShape2D_673og")
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="VelocityTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="VelocityTimer" to="." method="_reset_velocity"]

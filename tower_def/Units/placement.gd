@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 class_name Placer
 var unit: player_unit_base = null
 
